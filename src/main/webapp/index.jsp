@@ -53,8 +53,8 @@
   <div class="hero-content">
     <h1><%= "Welcome to JobHub!" %></h1>
     <p>Find your dream job or hire top talents effortlessly.</p>
-    <a href="/login" class="btn">Login</a>
-    <a href="/register" class="btn">Apply for a Job</a>
+    <a href="login" class="btn">Login</a>
+    <a href="register" class="btn">Apply for a Job</a>
   </div>
 </div>
 </body>

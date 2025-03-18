@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import com.jobhub.jobhub.services.UserService;
 import java.io.IOException;
 
-@WebServlet("/RegisterServlet")
+//@WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     String username = request.getParameter("username");
