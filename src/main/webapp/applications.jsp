@@ -11,84 +11,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Job Applications</title>
+  <title>Employment Requests</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Helvetica", sans-serif;
       margin: 0;
       padding: 20px;
-      background-color: #f4f4f4;
+      background-color: #eef2f3;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
     }
 
-    .container {
+    .wrapper {
       background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 80%;
-      max-width: 800px;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      width: 85%;
+      max-width: 850px;
     }
 
     h2 {
       text-align: center;
+      color: #333;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 20px;
+      margin-top: 15px;
     }
 
     th, td {
-      padding: 10px;
-      border: 1px solid #ddd;
+      padding: 12px;
+      border: 1px solid #ccc;
       text-align: left;
     }
 
     th {
-      background-color: #ff6600;
+      background-color: #0073e6;
       color: white;
     }
 
     a {
       text-decoration: none;
-      padding: 5px 10px;
+      padding: 7px 12px;
       margin: 5px;
-      border-radius: 5px;
+      border-radius: 6px;
       color: white;
       display: inline-block;
+      transition: 0.3s;
     }
 
-    .approve {
-      background-color: #28a745;
-    }
-
-    .reject {
-      background-color: #dc3545;
-    }
-
-    .approve:hover {
+    .confirm {
       background-color: #218838;
     }
 
-    .reject:hover {
+    .deny {
       background-color: #c82333;
+    }
+
+    .confirm:hover {
+      background-color: #1e7e34;
+    }
+
+    .deny:hover {
+      background-color: #a71d2a;
     }
   </style>
 </head>
 <body>
-<div class="container">
-  <h2>Job Applications</h2>
+<div class="wrapper">
+  <h2>Employment Requests</h2>
   <table>
     <tr>
-      <th>Job Title</th>
-      <th>Applicant Name</th>
-      <th>Status</th>
-      <th>Action</th>
+      <th>Position</th>
+      <th>Candidate Name</th>
+      <th>Application Status</th>
+      <th>Options</th>
     </tr>
     <%
       try {
@@ -99,15 +101,12 @@
         while (rs.next()) {
     %>
     <tr>
-      <td><%= rs.getString("title") %>
-      </td>
-      <td><%= rs.getString("employee_name") %>
-      </td>
-      <td><%= rs.getString("status") %>
-      </td>
+      <td><%= rs.getString("title") %></td>
+      <td><%= rs.getString("employee_name") %></td>
+      <td><%= rs.getString("status") %></td>
       <td>
-        <a class="approve" href="UpdateApplicationServlet?id=<%= rs.getInt("id") %>&status=Approved">Approve</a>
-        <a class="reject" href="UpdateApplicationServlet?id=<%= rs.getInt("id") %>&status=Rejected">Reject</a>
+        <a class="confirm" href="UpdateApplicationServlet?id=<%= rs.getInt("id") %>&status=Approved">Confirm</a>
+        <a class="deny" href="UpdateApplicationServlet?id=<%= rs.getInt("id") %>&status=Rejected">Deny</a>
       </td>
     </tr>
     <%
